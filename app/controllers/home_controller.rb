@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class HomeController < InertiaController
   def index
   end
 end

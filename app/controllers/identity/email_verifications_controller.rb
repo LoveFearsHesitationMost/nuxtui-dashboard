@@ -1,4 +1,4 @@
-class Identity::EmailVerificationsController < ApplicationController
+class Identity::EmailVerificationsController < InertiaController
   skip_before_action :authenticate, only: :show
 
   before_action :set_user, only: :show

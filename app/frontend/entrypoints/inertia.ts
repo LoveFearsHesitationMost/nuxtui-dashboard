@@ -1,5 +1,8 @@
 import { createInertiaApp } from '@inertiajs/vue3'
 import { createApp, DefineComponent, h } from 'vue'
+import ui from '@nuxt/ui/vue-plugin'
+import '../entrypoints/application.css'
+import PersistentLayout from "@/layouts/PersistentLayout.vue";
 
 createInertiaApp({
   // Set default page title
@@ -25,7 +28,7 @@ createInertiaApp({
     // and use the following lines.
     // see https://inertia-rails.dev/guide/pages#default-layouts
     //
-    // page.default.layout = page.default.layout || Layout
+    page.default.layout = page.default.layout || PersistentLayout
 
     return page
   },
@@ -33,6 +36,7 @@ createInertiaApp({
   setup({ el, App, props, plugin }) {
     createApp({ render: () => h(App, props) })
       .use(plugin)
+      .use(ui)
       .mount(el)
   },
 

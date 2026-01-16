@@ -41,3 +41,10 @@ node_modules
 # https://vitejs.dev/guide/env-and-mode.html#env-files
 *.local
 
+# Auto-generated Nuxt UI type declarations
+auto-imports.d.ts
+components.d.ts
+
+# Ignore automatically generated js-routes files.
+/app/javascript/routes.js
+/app/javascript/routes.d.ts
