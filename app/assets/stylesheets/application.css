@@ -1,6 +1,1 @@
 /* Application styles */
-
-/* https://ui.nuxt.com/docs/getting-started/installation/vue#add-the-isolate-class-to-your-root-container */
-#app {
-    isolation: isolate;
-}

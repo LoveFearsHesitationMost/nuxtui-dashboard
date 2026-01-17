@@ -9,13 +9,14 @@ class RegistrationsController < InertiaController
     @user = User.new(user_params)
 
     if @user.save
-      session_record = @user.sessions.create!
-      cookies.signed.permanent[:session_token] = { value: session_record.id, httponly: true }
+      # session_record = @user.sessions.create!
+      # cookies.signed.permanent[:session_token] = { value: session_record.id, httponly: true }
 
       send_email_verification
-      redirect_to root_path, notice: "Welcome! You have signed up successfully"
+      # redirect_to root_path, notice: "Welcome! You have signed up successfully"
+      redirect_to sign_in_path, notice: "账户激活邮件已发送，请检查邮箱"
     else
-      render :new, status: :unprocessable_entity
+      redirect_to sign_up_path, inertia: { errors: @user.errors.to_hash(true) }
     end
   end
 

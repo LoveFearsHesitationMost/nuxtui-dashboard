@@ -11,14 +11,14 @@ class SessionsController < InertiaController
   end
 
   def create
-    if user = User.authenticate_by(email: params[:email], password: params[:password])
-      @session = user.sessions.create!
-      cookies.signed.permanent[:session_token] = { value: @session.id, httponly: true }
+    user = User.authenticate_by(email: params[:email], password: params[:password])
+    return redirect_to sign_in_path, alert: "登录失败，密码或邮箱错误" unless user
+    return redirect_to sign_in_path, alert: "请先验证邮箱，点击邮件中的链接激活账户" unless user.verified?
 
-      redirect_back_or_to root_path, notice: "登录成功，欢迎回来"
-    else
-      redirect_to sign_in_path, alert: "登录失败，密码或邮箱错误"
-    end
+    @session = user.sessions.create!
+    cookies.signed.permanent[:session_token] = { value: @session.id, httponly: true }
+
+    redirect_back_or_to root_path, notice: "登录成功，欢迎回来"
   end
 
   def destroy
@@ -27,7 +27,8 @@ class SessionsController < InertiaController
   end
 
   private
-    def set_session
-      @session = Current.user.sessions.find(params[:id])
-    end
+
+  def set_session
+    @session = Current.user.sessions.find(params[:id])
+  end
 end

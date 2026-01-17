@@ -32,7 +32,7 @@ const flatErrors = computed(() => {
     <div class="bg-muted relative hidden lg:block col-span-3 bg-cover bg-center"
          :style="{'backgroundImage': `url(${background})`}">
     </div>
-    <div className="flex size-full justify-center items-center col-span-2">
+    <div class="flex size-full justify-center items-center col-span-2">
       <UPageCard class="w-full max-w-sm">
         <UAuthForm :fields="fields" :icon="icon" :title="title">
           <template #description="descriptionSlotProps">

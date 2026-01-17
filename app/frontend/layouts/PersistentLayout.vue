@@ -5,6 +5,8 @@ import {router} from "@inertiajs/vue3";
 
 const toast = useToast()
 
+const toaster = { position: 'top-center' }
+
 let removeListener: (() => void) | undefined
 
 onMounted(() => {
@@ -37,7 +39,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <UApp :locale="zh_cn">
+  <UApp :locale="zh_cn" :toaster="toaster">
     <slot></slot>
   </UApp>
 </template>
