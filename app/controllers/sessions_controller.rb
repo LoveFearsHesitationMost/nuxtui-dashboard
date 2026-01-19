@@ -18,7 +18,7 @@ class SessionsController < InertiaController
     @session = user.sessions.create!
     cookies.signed.permanent[:session_token] = { value: @session.id, httponly: true }
 
-    redirect_back_or_to root_path, notice: "登录成功，欢迎回来"
+    redirect_to root_path, notice: "登录成功，欢迎回来"
   end
 
   def destroy

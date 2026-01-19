@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
 import {computed, ref} from "vue";
+import {router, usePage} from "@inertiajs/vue3";
+import {sessionPath} from "@/routes";
 
 defineProps<{
   collapsed?: boolean
@@ -13,6 +15,10 @@ const user = ref({
     alt: 'Benjamin Canac'
   }
 })
+
+const sessionId = computed<string>(
+    () => usePage().props.auth.session.id
+)
 
 const items = computed<DropdownMenuItem[][]>(() => ([[{
   type: 'label',
@@ -72,6 +78,9 @@ const items = computed<DropdownMenuItem[][]>(() => ([[{
 }, {
   label: 'Log out',
   icon: 'i-lucide-log-out',
+  onSelect: () => {
+    router.delete(sessionPath(sessionId.value))
+  }
 }]]))
 </script>
 
