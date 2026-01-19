@@ -3,6 +3,7 @@ import background from "@/assets/login_bg.jpg"
 import type {AuthFormField} from '@nuxt/ui'
 import {usePage} from "@inertiajs/vue3";
 import {computed, PropType} from "vue";
+import {z} from "zod";
 
 defineProps({
   title: String,
@@ -15,11 +16,12 @@ defineProps({
     default: "i-lucide-lock",
   },
   fields: Array as PropType<AuthFormField[]>,
+  schema: Object as PropType<z.Schema>,
 })
 
-const page = usePage()
+const page = usePage();
 
-const errors = computed(() => page.props.errors)
+const errors = computed(() => page.props.errors);
 
 const flatErrors = computed(() => {
   return Object.values(errors.value).flat();
@@ -34,7 +36,7 @@ const flatErrors = computed(() => {
     </div>
     <div class="flex size-full justify-center items-center col-span-2">
       <UPageCard class="w-full max-w-sm">
-        <UAuthForm :fields="fields" :icon="icon" :title="title">
+        <UAuthForm :fields="fields" :icon="icon" :title="title" :schema="schema" validateOnInputDelay="0">
           <template #description="descriptionSlotProps">
             <slot name="description" v-bind="descriptionSlotProps"></slot>
           </template>

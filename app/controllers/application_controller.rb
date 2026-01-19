@@ -16,8 +16,8 @@ class ApplicationController < ActionController::Base
   def require_no_authentication
     return unless perform_authentication
 
-    flash[:notice] = "You are already signed in"
-    redirect_to root_path
+    # flash[:notice] = "您已登录，无需重复登录"
+    redirect_to root_path, notice: "您已登录，无需重复登录"
   end
 
   def perform_authentication
