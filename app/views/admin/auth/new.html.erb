@@ -1,0 +1,40 @@
+<div class="admin-login-container">
+  <div class="admin-login-card">
+    <div class="admin-login-header">
+      <h2 class="admin-login-title">管理后台登录</h2>
+      <p class="admin-login-subtitle">请使用管理员账户登录</p>
+    </div>
+
+    <%= form_with url: admin_sign_in_path, class: "admin-login-form" do |form| %>
+      <div class="admin-form-group">
+        <div class="admin-input-group">
+          <label for="email" class="admin-input-label sr-only">邮箱地址</label>
+          <%= form.email_field :email, required: true, autocomplete: "email",
+                               class: "admin-input admin-input-top",
+                               placeholder: "邮箱地址" %>
+        </div>
+        <div class="admin-input-group">
+          <label for="password" class="admin-input-label sr-only">密码</label>
+          <%= form.password_field :password, required: true, autocomplete: "current-password",
+                                  class: "admin-input admin-input-bottom",
+                                  placeholder: "密码" %>
+        </div>
+      </div>
+
+      <div class="admin-form-actions">
+        <button type="submit" class="admin-btn admin-btn-primary">
+              <span class="admin-btn-icon">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                </svg>
+              </span>
+          登录
+        </button>
+      </div>
+    <% end %>
+
+    <div class="admin-login-footer">
+      <%= link_to "返回应用", root_path, class: "admin-link" %>
+    </div>
+  </div>
+</div>

@@ -1,14 +1,24 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get "sign_in", to: "auth#new"
+    post "sign_in", to: "auth#create"
+    get "sign_out", to: "auth#destroy"
+    resources :users
+    resources :sessions, only: [ :index, :show, :destroy ]
+
+    root to: "dashboard#dashboard"
+  end
+
   get  "sign_in", to: "sessions#new"
   post "sign_in", to: "sessions#create"
   get  "sign_up", to: "registrations#new"
   post "sign_up", to: "registrations#create"
-  resources :sessions, only: [:index, :show, :destroy]
-  resource  :password, only: [:edit, :update]
+  resources :sessions, only: [ :index, :show, :destroy ]
+  resource  :password, only: [ :edit, :update ]
   namespace :identity do
-    resource :email,              only: [:edit, :update]
-    resource :email_verification, only: [:show, :create]
-    resource :password_reset,     only: [:new, :edit, :create, :update]
+    resource :email,              only: [ :edit, :update ]
+    resource :email_verification, only: [ :show, :create ]
+    resource :password_reset,     only: [ :new, :edit, :create, :update ]
   end
 
   scope module: "dashboard" do
@@ -20,7 +30,7 @@ Rails.application.routes.draw do
     get "(*path)", to: redirect { |params, req| "#{req.protocol}localhost:#{req.port}/#{params[:path]}" }
   end
 
-  get 'inertia-example', to: 'inertia_example#index'
+  get "inertia-example", to: "inertia_example#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration[8.1]
       t.string :password_digest, null: false
 
       t.boolean :verified, null: false, default: false
+      t.boolean :admin, null: false, default: false
 
       t.timestamps
     end

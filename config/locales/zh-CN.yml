@@ -7,9 +7,22 @@ zh-CN:
   activerecord:
     models:
       user: 用户
+      session: 会话
     attributes:
       user:
         email: 邮箱
         name: 姓名
         password: 密码
         password_confirmation: 确认密码
+        verified: 邮箱验证
+        created_at: 注册时间
+        updated_at: 最后更新时间
+        admin: 管理员
+        sessions: 会话
+      session:
+        user: 用户
+        user_id: 用户 ID
+        user_agent: 用户代理
+        ip_address: IP 地址
+        created_at: 登录时间
+        updated_at: 最后更新时间
