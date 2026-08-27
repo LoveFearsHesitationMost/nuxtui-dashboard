@@ -4,6 +4,8 @@
 # belong in git's global ignore instead:
 # `$XDG_CONFIG_HOME/git/ignore` or `~/.config/git/ignore`
 
+/vendor/bundle
+
 # Ignore bundler config.
 /.bundle
 
@@ -41,10 +43,23 @@ node_modules
 # https://vitejs.dev/guide/env-and-mode.html#env-files
 *.local
 
-# Auto-generated Nuxt UI type declarations
-auto-imports.d.ts
-components.d.ts
+# JetBrains
+.idea/*
+!.idea/modules.xml
+!.idea/codeStyles/
+!.idea/inspectionProfiles/
+!.idea/libraries/
+!.idea/runConfigurations/
+!.idea/misc.xml
+!.idea/vcs.xml
+*.iws
+*.iml
+*.ipr
 
-# Ignore automatically generated js-routes files.
-/app/javascript/routes.js
-/app/javascript/routes.d.ts
+# Zed
+.zed/
+
+# VS Code
+.vscode/
+
+CLAUDE.md

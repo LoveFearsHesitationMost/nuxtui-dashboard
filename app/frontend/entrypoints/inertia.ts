@@ -1,5 +1,4 @@
 import { createInertiaApp } from '@inertiajs/vue3'
-import { createApp, DefineComponent, h } from 'vue'
 import ui from '@nuxt/ui/vue-plugin'
 import '../entrypoints/application.css'
 import PersistentLayout from "@/layouts/PersistentLayout.vue";
@@ -15,40 +14,17 @@ createInertiaApp({
   // see https://inertia-rails.dev/guide/progress-indicators
   // progress: false,
 
-  resolve: (name) => {
-    const pages = import.meta.glob<DefineComponent>('../pages/**/*.vue', {
-      eager: true,
-    })
-    const page = pages[`../pages/${name}.vue`]
-    if (!page) {
-      console.error(`Missing Inertia page component: '${name}.vue'`)
-    }
-
-    // To use a default layout, import the Layout component
-    // and use the following lines.
-    // see https://inertia-rails.dev/guide/pages#default-layouts
-    //
-    page.default.layout = page.default.layout || PersistentLayout
-
-    return page
+  withApp(app) {
+    app.use(ui)
   },
 
-  setup({ el, App, props, plugin }) {
-    createApp({ render: () => h(App, props) })
-      .use(plugin)
-      .use(ui)
-      .mount(el)
-  },
+  pages: "../pages/",
+
+  layout: () => PersistentLayout,
 
   defaults: {
     form: {
       forceIndicesArrayFormatInFormData: false,
-    },
-    future: {
-      useScriptElementForInitialPage: true,
-      useDataInertiaHeadAttribute: true,
-      useDialogForErrorModal: true,
-      preserveEqualProps: true,
     },
   },
 }).catch((error) => {

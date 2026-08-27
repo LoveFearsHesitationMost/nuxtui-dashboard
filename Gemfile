@@ -59,6 +59,7 @@ end
 
 gem "inertia_rails", "~> 3.16"
 gem "authentication-zero", "~> 4.0"
-gem "vite_rails", "~> 3.0"
+gem "vite_rails", "~> 3.11"
+gem "rack-proxy", "~> 0.8.0"
 gem "js-routes", "~> 2.3.6"
 gem 'rails-i18n', '~> 8.1.0'

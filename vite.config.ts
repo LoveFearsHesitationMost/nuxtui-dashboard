@@ -3,12 +3,14 @@ import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'vite'
 import RubyPlugin from 'vite-plugin-ruby'
 import ui from '@nuxt/ui/vite'
+import inertia from "@inertiajs/vite";
 
 export default defineConfig({
   plugins: [
+    RubyPlugin(),
     vue(),
     tailwindcss(),
-    RubyPlugin(),
+    inertia(),
     ui({
       router: 'inertia',
       ui: {
@@ -63,4 +65,7 @@ export default defineConfig({
       }
     }),
   ],
+  resolve: {
+    tsconfigPaths: true
+  }
 })

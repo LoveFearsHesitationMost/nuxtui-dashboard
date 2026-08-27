@@ -1,0 +1,12 @@
+[tools]
+node = "24.19"
+ruby = "4.0"
+
+[env]
+
+[env.mise]
+file = ".env"
+
+[prepare]
+npm = { auto = true }
+bundler = { auto = true }

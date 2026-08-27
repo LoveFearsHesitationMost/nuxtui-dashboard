@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# 这个 binstub 确保使用项目 Gemfile 中的 bundler 版本，避免全局污染
+
+require "rubygems"
+
+# 锁定到当前项目的 Gemfile
+ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../Gemfile", __dir__)
+
+# 优先使用项目本地安装的 bundler
+gemfile = ENV["BUNDLE_GEMFILE"]
+bundle_binstub = File.expand_path("bundle", __dir__)
+
+# 如果项目安装了 bundler，使用它；否则回退到系统 bundler
+begin
+  gem_spec = Gem::Specification.find_by_name("bundler")
+  gem "bundler", gem_spec.version
+rescue Gem::LoadError
+  # 项目未安装 bundler，使用系统默认版本
+end
+
+# 加载并执行 bundler CLI
+require "bundler/cli"
+Bundler::CLI.start(ARGV, debug: true)

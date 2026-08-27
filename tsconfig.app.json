@@ -28,5 +28,11 @@
     }
   },
 
-  "include": ["app/frontend/**/*.ts", "app/frontend/**/*.tsx", "app/frontend/**/*.vue", "auto-imports.d.ts", "components.d.ts"]
+  "include": [
+    "app/frontend/**/*.ts",
+    "app/frontend/**/*.tsx",
+    "app/frontend/**/*.vue",
+    "auto-imports.d.ts",
+    "components.d.ts"
+  ]
 }
