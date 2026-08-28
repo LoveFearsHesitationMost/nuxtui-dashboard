@@ -10,6 +10,7 @@
     "vite-plugin-ruby": "^5.2.2"
   },
   "dependencies": {
+    "@iconify-json/ph": "^1.2.2",
     "@inertiajs/vite": "^3.7.0",
     "@inertiajs/vue3": "^3.7.0",
     "@nuxt/ui": "^4.11.0",

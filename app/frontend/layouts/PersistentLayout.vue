@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import {zh_cn} from "@nuxt/ui/locale";
 import {onMounted, onUnmounted} from "vue";
 import {router} from "@inertiajs/vue3";
 
 const toast = useToast()
 
-const toaster = { position: 'top-center' }
+const toaster = { position: 'bottom-right' }
 
 let removeListener: (() => void) | undefined
 
@@ -14,18 +13,14 @@ onMounted(() => {
     const flash = event.detail.flash
     if (flash.alert) {
       toast.add({
-        icon: "ic:baseline-error",
-        title: "出错了",
+        icon: "i-ph-warning-circle-fill",
+        title: flash.alert,
         color: "error",
-        description: flash.alert
       })
     }
     if (flash.notice) {
       toast.add({
-        icon: "ic:baseline-check-circle",
-        title: "操作成功",
-        color: "success",
-        description: flash.notice
+        title: flash.notice
       })
     }
   })
@@ -39,7 +34,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <UApp :locale="zh_cn" :toaster="toaster">
+  <UApp :toaster="toaster">
     <slot></slot>
   </UApp>
 </template>
