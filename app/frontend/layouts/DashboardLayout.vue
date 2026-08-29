@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { sidebarExternalRoutes, sidebarMainRoutes } from "@/routes/dashboard.ts";
-import UserMenu from "@/components/UserMenu.vue";
-import TeamsMenu from "@/components/TeamsMenu.vue";
+import { sidebarExternalRoutes, sidebarMainRoutes } from "@/routes/dashboard.ts"
+import UserMenu from "@/components/UserMenu.vue"
+import TeamsMenu from "@/components/TeamsMenu.vue"
 </script>
 
 <template>

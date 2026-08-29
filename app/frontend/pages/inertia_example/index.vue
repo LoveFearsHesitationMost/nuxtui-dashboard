@@ -17,8 +17,8 @@
     <div class="footer">
       <div class="card">
         <p>
-          Edit <code>app/frontend/pages/inertia_example/index.vue</code> and save to test
-          <abbr title="Hot Module Replacement">HMR</abbr>.
+          Edit <code>app/frontend/pages/inertia_example/index.vue</code> and
+          save to test <abbr title="Hot Module Replacement">HMR</abbr>.
         </p>
       </div>
 
@@ -32,7 +32,10 @@
         <li><strong>Ruby version:</strong> {{ ruby_version }}</li>
         <li>
           <ul>
-            <li><strong>Inertia Rails version:</strong> {{ inertia_rails_version }}</li>
+            <li>
+              <strong>Inertia Rails version:</strong>
+              {{ inertia_rails_version }}
+            </li>
             <li><strong>Vue version:</strong> {{ vue_version }}</li>
           </ul>
         </li>
@@ -42,19 +45,19 @@
 </template>
 
 <script setup>
-import { Head } from "@inertiajs/vue3";
-import { version as vue_version } from "vue";
+import { Head } from "@inertiajs/vue3"
+import { version as vue_version } from "vue"
 
-import railsSvg from "/assets/rails.svg";
-import inertiaSvg from "/assets/inertia.svg";
-import vueSvg from "/assets/vue.svg";
+import railsSvg from "/assets/rails.svg"
+import inertiaSvg from "/assets/inertia.svg"
+import vueSvg from "/assets/vue.svg"
 
 defineProps({
   rails_version: String,
   rack_version: String,
   ruby_version: String,
-  inertia_rails_version: String,
-});
+  inertia_rails_version: String
+})
 </script>
 
 <style global>
@@ -103,7 +106,8 @@ body {
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
-  filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+  filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03))
+    drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
 }
 .logo.inertia:hover {
   filter: drop-shadow(0 0 2em #646cffaa);

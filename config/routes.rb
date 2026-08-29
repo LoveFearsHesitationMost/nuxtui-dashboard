@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resource :password, only: [:edit, :update]
   namespace :identity do
     resource :email, only: [:edit, :update]
-    resource :email_verification, only: [:show, :create]
+    resource :email_verification, only: [:show, :new, :create]
     resource :password_reset, only: [:new, :edit, :create, :update]
   end
 

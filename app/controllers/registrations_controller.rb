@@ -33,7 +33,7 @@ class RegistrationsController < InertiaController
   private
 
   def user_params
-    params.permit(:email, :password, :password_confirmation)
+    params.permit(:email, :password, :password_confirmation, :terms_of_service)
   end
 
   def send_email_verification

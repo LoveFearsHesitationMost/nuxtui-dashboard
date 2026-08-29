@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AuthLayout from "@/layouts/AuthLayout.vue"
 import { router } from "@inertiajs/vue3"
-import { signInPath, signUpPath } from "@/routes"
+import { identityEmailVerificationPath, signInPath, signUpPath } from "@/routes"
 import { AuthFormField, FormSubmitEvent } from "@nuxt/ui"
 import { ref } from "vue"
 import * as z from "zod"
@@ -11,48 +11,50 @@ const fields = ref<AuthFormField[]>([
     name: "email",
     type: "email",
     label: "Email",
-    required: true
-  },
-  {
-    name: "password",
-    type: "password",
-    label: "Password",
+    description: "We'll send a verification link to this address.",
     required: true
   }
 ])
 
 const schema = z.object({
-  email: z.email("Not a valid email address"),
-  password: z.string("Password is required").min(8, "8 characters minimum")
+  email: z.email("Not a valid email address")
 })
 
 type Schema = z.output<typeof schema>
 
 function onSubmit(payload: FormSubmitEvent<Schema>) {
   if (payload.data) {
-    router.post(signInPath(), payload.data)
+    router.post(identityEmailVerificationPath(), payload.data)
   }
 }
 </script>
 
 <template>
   <AuthLayout
-    title="Sign in"
-    :is-password-hint-shown="true"
-    icon="i-ph-sign-in"
+    title="Resend Verification"
+    icon="i-ph-envelope"
     :fields="fields"
-    @submit="onSubmit"
     :schema="schema"
+    :is-email-hint-shown="false"
+    @submit="onSubmit"
   >
     <template #description>
+      <p>Enter your email to receive a new verification link</p>
       <p>
-        Don't have an account yet?
+        <ULink
+          :to="signInPath()"
+          class="text-primary font-medium"
+          tabindex="-1"
+        >
+          Back to Sign in
+        </ULink>
+        |
         <ULink
           :to="signUpPath()"
           class="text-primary font-medium"
           tabindex="-1"
         >
-          Sign up
+          Create account
         </ULink>
       </p>
     </template>

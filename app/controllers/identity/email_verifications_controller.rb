@@ -16,7 +16,7 @@ class Identity::EmailVerificationsController < InertiaController
     if user
       UserMailer.with(user: user).email_verification.deliver_later
     end
-    redirect_to sign_in_path, notice: "If an unverified account exists with that email, we've sent a verification link."
+    redirect_back_or_to sign_in_path, notice: "If an unverified account exists with that email, we've sent a verification link."
   end
 
   private

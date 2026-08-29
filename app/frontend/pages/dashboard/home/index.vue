@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import DashboardLayout from "~/layouts/DashboardLayout.vue";
-import { ref } from "vue";
+import DashboardLayout from "~/layouts/DashboardLayout.vue"
+import { ref } from "vue"
 
 const studyStats = ref({
   todayStudyTime: 120,
   totalPoints: 2580,
   completedCourses: 12,
   totalCourses: 20,
-  streakDays: 7,
-});
+  streakDays: 7
+})
 
 const todayPlan = ref([
   {
@@ -17,7 +17,7 @@ const todayPlan = ref([
     type: "video",
     duration: 45,
     progress: 60,
-    status: "in-progress",
+    status: "in-progress"
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const todayPlan = ref([
     type: "practice",
     duration: 30,
     progress: 0,
-    status: "pending",
+    status: "pending"
   },
   {
     id: 3,
@@ -33,9 +33,9 @@ const todayPlan = ref([
     type: "project",
     duration: 90,
     progress: 100,
-    status: "completed",
-  },
-]);
+    status: "completed"
+  }
+])
 
 const recommendedCourses = ref([
   {
@@ -46,7 +46,7 @@ const recommendedCourses = ref([
     students: 1234,
     image: "https://via.placeholder.com/300x200/4F46E5/ffffff?text=Vue+3",
     price: "¥99",
-    level: "中级",
+    level: "中级"
   },
   {
     id: 2,
@@ -56,7 +56,7 @@ const recommendedCourses = ref([
     students: 856,
     image: "https://via.placeholder.com/300x200/059669/ffffff?text=TypeScript",
     price: "¥129",
-    level: "高级",
+    level: "高级"
   },
   {
     id: 3,
@@ -66,9 +66,9 @@ const recommendedCourses = ref([
     students: 2341,
     image: "https://via.placeholder.com/300x200/DC2626/ffffff?text=Node.js",
     price: "¥149",
-    level: "中级",
-  },
-]);
+    level: "中级"
+  }
+])
 
 const recommendedProblems = ref([
   {
@@ -77,7 +77,7 @@ const recommendedProblems = ref([
     difficulty: "简单",
     tags: ["数组", "哈希表"],
     acceptance: "68.5%",
-    points: 10,
+    points: 10
   },
   {
     id: 2,
@@ -85,7 +85,7 @@ const recommendedProblems = ref([
     difficulty: "中等",
     tags: ["字符串"],
     acceptance: "52.3%",
-    points: 20,
+    points: 20
   },
   {
     id: 3,
@@ -93,35 +93,35 @@ const recommendedProblems = ref([
     difficulty: "简单",
     tags: ["栈", "字符串"],
     acceptance: "44.8%",
-    points: 15,
-  },
-]);
+    points: 15
+  }
+])
 
 const getDifficultyColor = (difficulty: string) => {
   switch (difficulty) {
     case "简单":
-      return "green";
+      return "green"
     case "中等":
-      return "yellow";
+      return "yellow"
     case "困难":
-      return "red";
+      return "red"
     default:
-      return "gray";
+      return "gray"
   }
-};
+}
 
 const getTypeIcon = (type: string) => {
   switch (type) {
     case "video":
-      return "i-lucide-play-circle";
+      return "i-lucide-play-circle"
     case "practice":
-      return "i-lucide-edit-3";
+      return "i-lucide-edit-3"
     case "project":
-      return "i-lucide-folder";
+      return "i-lucide-folder"
     default:
-      return "i-lucide-file";
+      return "i-lucide-file"
   }
-};
+}
 </script>
 
 <template>
@@ -154,7 +154,9 @@ const getTypeIcon = (type: string) => {
               <div class="flex items-center justify-between">
                 <div>
                   <p class="text-sm text-gray-500">今日学习时长</p>
-                  <p class="text-2xl font-bold">{{ studyStats.todayStudyTime }}分钟</p>
+                  <p class="text-2xl font-bold">
+                    {{ studyStats.todayStudyTime }}分钟
+                  </p>
                 </div>
                 <div class="rounded-lg bg-blue-100 p-3">
                   <UIcon name="i-lucide-clock" class="h-6 w-6 text-blue-600" />
@@ -179,7 +181,9 @@ const getTypeIcon = (type: string) => {
                 <div>
                   <p class="text-sm text-gray-500">课程进度</p>
                   <p class="text-2xl font-bold">
-                    {{ studyStats.completedCourses }}/{{ studyStats.totalCourses }}
+                    {{ studyStats.completedCourses }}/{{
+                      studyStats.totalCourses
+                    }}
                   </p>
                 </div>
                 <div class="rounded-lg bg-purple-100 p-3">
@@ -192,7 +196,9 @@ const getTypeIcon = (type: string) => {
               <div class="flex items-center justify-between">
                 <div>
                   <p class="text-sm text-gray-500">连续学习</p>
-                  <p class="text-2xl font-bold">{{ studyStats.streakDays }}天</p>
+                  <p class="text-2xl font-bold">
+                    {{ studyStats.streakDays }}天
+                  </p>
                 </div>
                 <div class="rounded-lg bg-red-100 p-3">
                   <UIcon name="i-lucide-fire" class="h-6 w-6 text-red-600" />
@@ -208,7 +214,9 @@ const getTypeIcon = (type: string) => {
                 <template #header>
                   <div class="flex items-center justify-between">
                     <h3 class="text-lg font-semibold">今日学习计划</h3>
-                    <UButton color="gray" variant="ghost" size="sm"> 查看全部 </UButton>
+                    <UButton color="gray" variant="ghost" size="sm">
+                      查看全部
+                    </UButton>
                   </div>
                 </template>
 
@@ -226,19 +234,29 @@ const getTypeIcon = (type: string) => {
 
                     <div class="min-w-0 flex-1">
                       <h4 class="truncate font-medium">{{ plan.title }}</h4>
-                      <div class="mt-1 flex items-center gap-4 text-sm text-gray-500">
+                      <div
+                        class="mt-1 flex items-center gap-4 text-sm text-gray-500"
+                      >
                         <span>{{ plan.duration }}分钟</span>
-                        <span v-if="plan.progress > 0">{{ plan.progress }}% 完成</span>
+                        <span v-if="plan.progress > 0"
+                          >{{ plan.progress }}% 完成</span
+                        >
                       </div>
                       <UProgress
                         :value="plan.progress"
                         class="mt-2"
-                        :color="plan.status === 'completed' ? 'green' : 'primary'"
+                        :color="
+                          plan.status === 'completed' ? 'green' : 'primary'
+                        "
                       />
                     </div>
 
                     <div class="flex-shrink-0">
-                      <UButton v-if="plan.status === 'pending'" size="sm" color="primary">
+                      <UButton
+                        v-if="plan.status === 'pending'"
+                        size="sm"
+                        color="primary"
+                      >
                         开始学习
                       </UButton>
                       <UButton
@@ -249,7 +267,10 @@ const getTypeIcon = (type: string) => {
                       >
                         继续学习
                       </UButton>
-                      <div v-else class="flex items-center gap-1 text-green-600">
+                      <div
+                        v-else
+                        class="flex items-center gap-1 text-green-600"
+                      >
                         <UIcon name="i-lucide-check-circle" class="h-4 w-4" />
                         <span class="text-sm">已完成</span>
                       </div>
@@ -265,7 +286,9 @@ const getTypeIcon = (type: string) => {
                 <template #header>
                   <div class="flex items-center justify-between">
                     <h3 class="text-lg font-semibold">推荐题目</h3>
-                    <UButton color="gray" variant="ghost" size="sm"> 更多 </UButton>
+                    <UButton color="gray" variant="ghost" size="sm">
+                      更多
+                    </UButton>
                   </div>
                 </template>
 
@@ -277,7 +300,10 @@ const getTypeIcon = (type: string) => {
                   >
                     <div class="mb-2 flex items-center justify-between">
                       <h4 class="text-sm font-medium">{{ problem.title }}</h4>
-                      <UBadge :color="getDifficultyColor(problem.difficulty)" size="xs">
+                      <UBadge
+                        :color="getDifficultyColor(problem.difficulty)"
+                        size="xs"
+                      >
                         {{ problem.difficulty }}
                       </UBadge>
                     </div>
@@ -294,9 +320,13 @@ const getTypeIcon = (type: string) => {
                       </UBadge>
                     </div>
 
-                    <div class="flex items-center justify-between text-xs text-gray-500">
+                    <div
+                      class="flex items-center justify-between text-xs text-gray-500"
+                    >
                       <span>通过率: {{ problem.acceptance }}</span>
-                      <span class="text-primary-600">+{{ problem.points }}积分</span>
+                      <span class="text-primary-600"
+                        >+{{ problem.points }}积分</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -309,12 +339,18 @@ const getTypeIcon = (type: string) => {
             <template #header>
               <div class="flex items-center justify-between">
                 <h3 class="text-lg font-semibold">推荐课程</h3>
-                <UButton color="gray" variant="ghost" size="sm"> 查看全部 </UButton>
+                <UButton color="gray" variant="ghost" size="sm">
+                  查看全部
+                </UButton>
               </div>
             </template>
 
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-              <UCard v-for="course in recommendedCourses" :key="course.id" class="overflow-hidden">
+              <UCard
+                v-for="course in recommendedCourses"
+                :key="course.id"
+                class="overflow-hidden"
+              >
                 <img
                   :src="course.image"
                   :alt="course.title"
@@ -330,7 +366,10 @@ const getTypeIcon = (type: string) => {
 
                 <div class="mb-3 flex items-center gap-4 text-sm text-gray-600">
                   <div class="flex items-center gap-1">
-                    <UIcon name="i-lucide-star" class="h-4 w-4 text-yellow-500" />
+                    <UIcon
+                      name="i-lucide-star"
+                      class="h-4 w-4 text-yellow-500"
+                    />
                     <span>{{ course.rating }}</span>
                   </div>
                   <span>{{ course.students }}人学习</span>
@@ -340,7 +379,9 @@ const getTypeIcon = (type: string) => {
                 </div>
 
                 <div class="flex items-center justify-between">
-                  <span class="text-primary-600 text-lg font-bold">{{ course.price }}</span>
+                  <span class="text-primary-600 text-lg font-bold">{{
+                    course.price
+                  }}</span>
                   <UButton size="sm" color="primary"> 立即学习 </UButton>
                 </div>
               </UCard>

@@ -1,7 +1,7 @@
-import { createInertiaApp } from "@inertiajs/vue3";
-import ui from "@nuxt/ui/vue-plugin";
-import "../entrypoints/application.css";
-import PersistentLayout from "@/layouts/PersistentLayout.vue";
+import { createInertiaApp } from "@inertiajs/vue3"
+import ui from "@nuxt/ui/vue-plugin"
+import "../entrypoints/application.css"
+import PersistentLayout from "@/layouts/PersistentLayout.vue"
 
 createInertiaApp({
   // Set default page title
@@ -15,7 +15,7 @@ createInertiaApp({
   // progress: false,
 
   withApp(app) {
-    app.use(ui);
+    app.use(ui)
   },
 
   pages: "../pages/",
@@ -24,20 +24,20 @@ createInertiaApp({
 
   defaults: {
     form: {
-      forceIndicesArrayFormatInFormData: false,
-    },
-  },
+      forceIndicesArrayFormatInFormData: false
+    }
+  }
 }).catch((error) => {
   // This ensures this entrypoint is only loaded on Inertia pages
   // by checking for the presence of the root element (#app by default).
   // Feel free to remove this `catch` if you don't need it.
   if (document.getElementById("app")) {
-    throw error;
+    throw error
   } else {
     console.error(
       "Missing root element.\n\n" +
         "If you see this error, it probably means you loaded Inertia.js on non-Inertia pages.\n" +
-        'Consider moving <%= vite_javascript_tag "inertia" %> to the Inertia-specific layout instead.',
-    );
+        'Consider moving <%= vite_javascript_tag "inertia" %> to the Inertia-specific layout instead.'
+    )
   }
-});
+})

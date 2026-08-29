@@ -1,36 +1,36 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted } from "vue";
-import { router } from "@inertiajs/vue3";
+import { onMounted, onUnmounted } from "vue"
+import { router } from "@inertiajs/vue3"
 
-const toast = useToast();
+const toast = useToast()
 
-const toaster = { position: "bottom-right" };
+const toaster = { position: "bottom-right" }
 
-let removeListener: (() => void) | undefined;
+let removeListener: (() => void) | undefined
 
 onMounted(() => {
   removeListener = router.on("flash", (event) => {
-    const flash = event.detail.flash;
+    const flash = event.detail.flash
     if (flash.alert) {
       toast.add({
         icon: "i-ph-warning-circle-fill",
         title: flash.alert,
-        color: "error",
-      });
+        color: "error"
+      })
     }
     if (flash.notice) {
       toast.add({
-        title: flash.notice,
-      });
+        title: flash.notice
+      })
     }
-  });
-});
+  })
+})
 
 onUnmounted(() => {
   if (removeListener) {
-    removeListener();
+    removeListener()
   }
-});
+})
 </script>
 
 <template>

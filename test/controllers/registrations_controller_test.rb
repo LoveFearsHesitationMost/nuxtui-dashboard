@@ -12,22 +12,30 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should sign up" do
     assert_difference("User.count") do
-      post sign_up_url, params: { email: "lazaronixon@hey.com", password: "Secret1*3*5*", password_confirmation: "Secret1*3*5*" }
+      post sign_up_url, params: { email: "lazaronixon@hey.com", password: "Secret1*3*5*", password_confirmation: "Secret1*3*5*", terms_of_service: "1" }
     end
 
     assert_inertia_component "registrations/check_email_guide"
   end
 
   test "should deny short password" do
-    post sign_up_url, params: { email: "lazaronixon@another.com", password: "short", password_confirmation: "short" }
+    post sign_up_url, params: { email: "lazaronixon@another.com", password: "short", password_confirmation: "short", terms_of_service: "1" }
     assert_redirected_to sign_up_url
 
     follow_redirect!
     assert_equal "Password is too short (minimum is 8 characters)", inertia.props[:errors][:password].first
   end
 
+  test "should deny tos disagreement" do
+    post sign_up_url, params: { email: "tos@disagree.com", password: "Secret1*3*5*", password_confirmation: "Secret1*3*5*", terms_of_service: "0" }
+    assert_redirected_to sign_up_url
+
+    follow_redirect!
+    assert_equal "Terms of service must be accepted", inertia.props[:errors][:terms_of_service].first
+  end
+
   test "should deny unmatched password confirmation" do
-    post sign_up_url, params: { email: "lazaronixon@third.com", password: "ohmypassword", password_confirmation: "unmatchedpwd:)" }
+    post sign_up_url, params: { email: "lazaronixon@third.com", password: "ohmypassword", password_confirmation: "unmatchedpwd:)", terms_of_service: "1" }
     assert_redirected_to sign_up_url
 
     follow_redirect!
