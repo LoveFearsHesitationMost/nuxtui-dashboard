@@ -1,10 +1,10 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @import "@nuxt/ui";
 
-@plugin '@tailwindcss/typography';
-@plugin '@tailwindcss/forms';
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
 
 /* https://ui.nuxt.com/docs/getting-started/installation/vue#add-the-isolate-class-to-your-root-container */
 #app {
-    isolation: isolate;
+  isolation: isolate;
 }

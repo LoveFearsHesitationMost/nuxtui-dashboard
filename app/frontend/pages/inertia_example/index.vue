@@ -10,14 +10,15 @@
         <img class="logo inertia" :src="inertiaSvg" alt="Inertia logo" />
       </a>
       <a href="https://vuejs.org" target="_blank">
-        <img class="logo vue" :src="vueSvg" alt="Vue logo"/>
+        <img class="logo vue" :src="vueSvg" alt="Vue logo" />
       </a>
     </nav>
 
     <div class="footer">
       <div class="card">
         <p>
-          Edit <code>app/frontend/pages/inertia_example/index.vue</code> and save to test <abbr title="Hot Module Replacement">HMR</abbr>.
+          Edit <code>app/frontend/pages/inertia_example/index.vue</code> and save to test
+          <abbr title="Hot Module Replacement">HMR</abbr>.
         </p>
       </div>
 
@@ -35,32 +36,32 @@
             <li><strong>Vue version:</strong> {{ vue_version }}</li>
           </ul>
         </li>
-        </ul>
+      </ul>
     </div>
   </div>
 </template>
 
 <script setup>
-import { Head } from '@inertiajs/vue3'
-import { version as vue_version } from 'vue';
+import { Head } from "@inertiajs/vue3";
+import { version as vue_version } from "vue";
 
-import railsSvg from '/assets/rails.svg'
-import inertiaSvg from '/assets/inertia.svg'
-import vueSvg from '/assets/vue.svg'
+import railsSvg from "/assets/rails.svg";
+import inertiaSvg from "/assets/inertia.svg";
+import vueSvg from "/assets/vue.svg";
 
 defineProps({
   rails_version: String,
   rack_version: String,
   ruby_version: String,
   inertia_rails_version: String,
-})
+});
 </script>
 
 <style global>
-  body {
-    margin: 0;
-    padding: 0;
-  }
+body {
+  margin: 0;
+  padding: 0;
+}
 </style>
 
 <style scoped>
@@ -69,12 +70,12 @@ defineProps({
   margin: 0;
   padding: 0;
   align-items: center;
-  background-color: #F0E7E9;
+  background-color: #f0e7e9;
   background-image: url(data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjEwMjQiIHZpZXdCb3g9IjAgMCAxNDQwIDEwMjQiIHdpZHRoPSIxNDQwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im0xNDQwIDUxMC4wMDA2NDh2LTUxMC4wMDA2NDhoLTE0NDB2Mzg0LjAwMDY0OGM0MTcuMzExOTM5IDEzMS4xNDIxNzkgODkxIDE3MS41MTMgMTQ0MCAxMjZ6IiBmaWxsPSIjZmZmIi8+PC9zdmc+);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  color: #261B23;
+  color: #261b23;
   display: flex;
   flex-direction: column;
   font-family: Sans-Serif;
@@ -116,7 +117,8 @@ defineProps({
 
 @media (prefers-color-scheme: dark) {
   .logo {
-    filter: drop-shadow(0 20px 13px rgb(255 255 255 / 0.03)) drop-shadow(0 8px 5px rgb(255 255 255 / 0.08));
+    filter: drop-shadow(0 20px 13px rgb(255 255 255 / 0.03))
+      drop-shadow(0 8px 5px rgb(255 255 255 / 0.08));
   }
 }
 

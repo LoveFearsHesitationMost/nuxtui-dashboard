@@ -1,0 +1,9 @@
+node_modules
+dist
+tmp
+vendor
+public
+*.md
+auto-imports.d.ts
+components.d.ts
+**/routes/**
