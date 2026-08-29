@@ -25,6 +25,9 @@
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/dictionaries" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/jsLinters" />
+      <excludeFolder url="file://$MODULE_DIR$/public/vite-test" />
     </content>
     <orderEntry type="jdk" jdkName="mise: 4.0.5" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

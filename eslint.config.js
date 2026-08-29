@@ -1,8 +1,6 @@
-import eslintPluginVue from "eslint-plugin-vue";
-import tseslint from "typescript-eslint";
-import eslintConfigPrettier from "eslint-config-prettier";
-import eslintPluginPrettier from "eslint-plugin-prettier/recommended";
-import stylisticPlugin from "@stylistic/eslint-plugin";
+import eslintPluginVue from "eslint-plugin-vue"
+import tseslint from "typescript-eslint"
+import eslintConfigPrettier from "eslint-config-prettier"
 
 export default tseslint.config(
   {
@@ -11,8 +9,8 @@ export default tseslint.config(
       "**/dist/**",
       "**/tmp/**",
       "**/vendor/**",
-      "**/routes/**",
-    ],
+      "**/routes/**"
+    ]
   },
   ...tseslint.configs.recommended,
   ...eslintPluginVue.configs["flat/strongly-recommended"],
@@ -20,21 +18,15 @@ export default tseslint.config(
     files: ["**/*.vue"],
     languageOptions: {
       parserOptions: {
-        parser: tseslint.parser,
-      },
-    },
+        parser: tseslint.parser
+      }
+    }
   },
   eslintConfigPrettier,
-  eslintPluginPrettier,
   {
-    plugins: {
-      "@stylistic": stylisticPlugin,
-    },
+    files: ["app/frontend/pages/**/*.vue"],
     rules: {
-      "@stylistic/indent": ["error", 2],
-      "@stylistic/quotes": ["error", "double", { avoidEscape: true }],
-      "@stylistic/object-curly-spacing": ["error", "always"],
-      "array-bracket-spacing": ["error", "never"],
-    },
-  },
-);
+      "vue/multi-word-component-names": "off"
+    }
+  }
+)
