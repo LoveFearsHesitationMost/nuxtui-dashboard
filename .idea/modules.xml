@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/nuxtui-dashboard.iml" filepath="$PROJECT_DIR$/.idea/nuxtui-dashboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/otomo.iml" filepath="$PROJECT_DIR$/.idea/otomo.iml" />
     </modules>
   </component>
 </project>
