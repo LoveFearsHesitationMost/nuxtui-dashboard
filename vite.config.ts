@@ -4,6 +4,7 @@ import { defineConfig } from 'vite'
 import RubyPlugin from 'vite-plugin-ruby'
 import ui from '@nuxt/ui/vite'
 import inertia from "@inertiajs/vite";
+import svgLoader from 'vite-svg-loader'
 
 export default defineConfig({
   plugins: [
@@ -11,7 +12,9 @@ export default defineConfig({
     vue(),
     tailwindcss(),
     inertia(),
+    svgLoader(),
     ui({
+      prose: true,
       router: 'inertia',
       ui: {
         icons: {

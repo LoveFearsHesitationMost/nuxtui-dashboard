@@ -1,5 +1,8 @@
 class RegistrationsController < InertiaController
   skip_before_action :authenticate
+  rate_limit to: 5, within: 5.minutes, only: :create, with: -> {
+    redirect_back_or_to sign_up_path, alert: "Too many requests. Please try again later."
+  }
 
   def new
     @user = User.new
@@ -9,23 +12,31 @@ class RegistrationsController < InertiaController
     @user = User.new(user_params)
 
     if @user.save
-      # session_record = @user.sessions.create!
-      # cookies.signed.permanent[:session_token] = { value: session_record.id, httponly: true }
-
       send_email_verification
-      # redirect_to root_path, notice: "Welcome! You have signed up successfully"
-      redirect_to sign_in_path, notice: "账户激活邮件已发送，请检查邮箱"
+      render inertia: "registrations/check_email_guide", props: {
+        resend_email: user_params[:email]
+      }
     else
-      redirect_to sign_up_path, inertia: { errors: @user.errors.to_hash(true) }
+      existing_user = User.find_by(email: user_params[:email], verified: false)
+      if existing_user
+        UserMailer.with(user: existing_user).email_verification.deliver_later
+        redirect_to sign_up_path, inertia: {
+          errors: { email: [
+            "An account with this email exists but hasn't been verified. We've sent a new verification email with magic link to #{user_params[:email]}. Check your inbox." ] }
+        }
+      else
+        redirect_to sign_up_path, inertia: { errors: @user.errors.to_hash(true) }
+      end
     end
   end
 
   private
-    def user_params
-      params.permit(:email, :password, :password_confirmation)
-    end
 
-    def send_email_verification
-      UserMailer.with(user: @user).email_verification.deliver_later
-    end
+  def user_params
+    params.permit(:email, :password, :password_confirmation)
+  end
+
+  def send_email_verification
+    UserMailer.with(user: @user).email_verification.deliver_later
+  end
 end

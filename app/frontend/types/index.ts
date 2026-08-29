@@ -1,15 +1,14 @@
 export interface Auth {
-  user: User
-  session: Pick<Session, "id">
+  user: User | null
+  session: Pick<Session, "id"> | null
 }
-
 
 export interface FlashData {
   alert?: string
   notice?: string
 }
 
-export type SharedProps = {
+export interface SharedProps {
   auth: Auth
 }
 
@@ -24,7 +23,7 @@ export interface User {
 }
 
 export interface Session {
-  id: string
+  id: number
   user_agent: string
   ip_address: string
   created_at: string

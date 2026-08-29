@@ -1,19 +1,17 @@
 Rails.application.routes.draw do
-  get  "sign_in", to: "sessions#new"
+  get "sign_in", to: "sessions#new"
   post "sign_in", to: "sessions#create"
-  get  "sign_up", to: "registrations#new"
+  get "sign_up", to: "registrations#new"
   post "sign_up", to: "registrations#create"
   resources :sessions, only: [:index, :show, :destroy]
-  resource  :password, only: [:edit, :update]
+  resource :password, only: [:edit, :update]
   namespace :identity do
-    resource :email,              only: [:edit, :update]
+    resource :email, only: [:edit, :update]
     resource :email_verification, only: [:show, :create]
-    resource :password_reset,     only: [:new, :edit, :create, :update]
+    resource :password_reset, only: [:new, :edit, :create, :update]
   end
 
-  scope module: "dashboard" do
-    root "home#index"
-  end
+  root "home#index"
 
   # Redirect to localhost from 127.0.0.1 to use same IP address with Vite server
   constraints(host: "127.0.0.1") do

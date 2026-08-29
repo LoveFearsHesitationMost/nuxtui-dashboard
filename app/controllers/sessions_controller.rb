@@ -1,7 +1,10 @@
 class SessionsController < InertiaController
   skip_before_action :authenticate, only: %i[ new create ]
-
-  before_action :set_session, only: %i[ destroy ]
+  before_action :require_no_authentication, only: :new
+  before_action :set_session, only: :destroy
+  rate_limit to: 10, within: 3.minutes, only: :create, with: -> {
+    redirect_back_or_to sign_in_path, alert: "Too many requests. Please try again later."
+  }
 
   def index
     @sessions = Current.user.sessions.order(created_at: :desc)
@@ -12,18 +15,22 @@ class SessionsController < InertiaController
 
   def create
     user = User.authenticate_by(email: params[:email], password: params[:password])
-    return redirect_to sign_in_path, alert: "登录失败，密码或邮箱错误" unless user
-    return redirect_to sign_in_path, alert: "请先验证邮箱，点击邮件中的链接激活账户" unless user.verified?
+    return redirect_to sign_in_path, alert: "Your credential is invalid, check and try again" unless user
+    return redirect_to sign_in_path, alert: "Your account has not verified yet. Check your email inbox." unless user.verified?
 
     @session = user.sessions.create!
     cookies.signed.permanent[:session_token] = { value: @session.id, httponly: true }
 
-    redirect_to root_path, notice: "登录成功，欢迎回来"
+    redirect_to root_path
   end
 
   def destroy
     @session.destroy
-    redirect_to(sessions_path, notice: "该会话已注销")
+    if Current.session.id == params[:id]
+      redirect_to sessions_path, notice: "That session has been logged out"
+    else
+      redirect_to root_path, notice: "You are signed out."
+    end
   end
 
   private

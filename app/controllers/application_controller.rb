@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ApplicationController < ActionController::Base
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
@@ -16,8 +14,7 @@ class ApplicationController < ActionController::Base
   def require_no_authentication
     return unless perform_authentication
 
-    # flash[:notice] = "您已登录，无需重复登录"
-    redirect_to root_path, notice: "您已登录，无需重复登录"
+    redirect_to root_path, notice: "You are already signed in"
   end
 
   def perform_authentication
