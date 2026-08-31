@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     resource :password_reset, only: [:new, :edit, :create, :update]
   end
 
+  namespace :settings do
+    resource :profile
+  end
+
   root "home#index"
 
   # Redirect to localhost from 127.0.0.1 to use same IP address with Vite server

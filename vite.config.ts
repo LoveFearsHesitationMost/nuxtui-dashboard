@@ -16,6 +16,11 @@ export default defineConfig({
     ui({
       prose: true,
       router: 'inertia',
+      icon: {
+        clientBundle: {
+          collections: ['ph']
+        }
+      },
       ui: {
         icons: {
           arrowDown: 'i-ph-arrow-down',

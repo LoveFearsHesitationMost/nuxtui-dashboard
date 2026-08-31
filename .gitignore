@@ -44,7 +44,7 @@ node_modules
 *.local
 
 # mise-en-place
-.mise/
+.mise/*
 
 # JetBrains
 .idea/*

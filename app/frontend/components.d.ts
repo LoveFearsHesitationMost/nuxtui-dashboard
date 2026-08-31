@@ -19,10 +19,12 @@ declare module 'vue' {
     UAvatar: typeof import('./../../node_modules/@nuxt/ui/dist/runtime/components/Avatar.vue')['default']
     UBadge: typeof import('./../../node_modules/@nuxt/ui/dist/runtime/components/Badge.vue')['default']
     UButton: typeof import('./../../node_modules/@nuxt/ui/dist/runtime/components/Button.vue')['default']
+    UCard: typeof import('./../../node_modules/@nuxt/ui/dist/runtime/components/Card.vue')['default']
     UContainer: typeof import('./../../node_modules/@nuxt/ui/dist/runtime/components/Container.vue')['default']
     UDropdownMenu: typeof import('./../../node_modules/@nuxt/ui/dist/runtime/components/DropdownMenu.vue')['default']
     UFooter: typeof import('./../../node_modules/@nuxt/ui/dist/runtime/components/Footer.vue')['default']
     UFooterColumns: typeof import('./../../node_modules/@nuxt/ui/dist/runtime/components/FooterColumns.vue')['default']
+    UForm: typeof import('./../../node_modules/@nuxt/ui/dist/runtime/components/Form.vue')['default']
     UFormField: typeof import('./../../node_modules/@nuxt/ui/dist/runtime/components/FormField.vue')['default']
     UHeader: typeof import('./../../node_modules/@nuxt/ui/dist/runtime/components/Header.vue')['default']
     UIcon: typeof import('./../../node_modules/@nuxt/ui/dist/runtime/vue/components/Icon.vue')['default']
@@ -35,6 +37,8 @@ declare module 'vue' {
     UPageList: typeof import('./../../node_modules/@nuxt/ui/dist/runtime/components/PageList.vue')['default']
     UPageSection: typeof import('./../../node_modules/@nuxt/ui/dist/runtime/components/PageSection.vue')['default']
     USeparator: typeof import('./../../node_modules/@nuxt/ui/dist/runtime/components/Separator.vue')['default']
+    UTextarea: typeof import('./../../node_modules/@nuxt/ui/dist/runtime/components/Textarea.vue')['default']
+    UTooltip: typeof import('./../../node_modules/@nuxt/ui/dist/runtime/components/Tooltip.vue')['default']
     UUser: typeof import('./../../node_modules/@nuxt/ui/dist/runtime/components/User.vue')['default']
   }
 }

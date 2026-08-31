@@ -4,8 +4,6 @@
   "type": "module",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@iconify-json/lucide": "^1.2.84",
-    "@iconify-json/material-symbols": "^1.2.0",
     "@iconify/vue": "^5.0.0",
     "eslint": "^10.9.1",
     "eslint-config-prettier": "^10.1.8",

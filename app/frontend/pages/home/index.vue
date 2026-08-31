@@ -67,7 +67,7 @@ const CTA_LINKS = ref<ButtonProps[]>([
     label: "Learn more",
     color: "neutral",
     variant: "subtle",
-    trailingIcon: "i-lucide-arrow-right"
+    trailingIcon: "i-ph-arrow-right"
   }
 ])
 </script>

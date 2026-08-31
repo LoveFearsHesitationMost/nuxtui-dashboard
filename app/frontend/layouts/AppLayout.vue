@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { computed } from "vue"
 import OtomoLogo from "@/assets/otomo.svg?component"
-import { FooterColumn } from "@nuxt/ui/components/FooterColumns.vue"
 import { sessionPath, signInPath, signUpPath } from "@/routes"
 import { router, usePage } from "@inertiajs/vue3"
-import type { DropdownMenuItem } from "@nuxt/ui"
 
 defineProps({
   showSearch: {
@@ -24,7 +22,7 @@ const userAvatar = computed(
 
 const sessionId = computed(() => page.props.auth.session?.id)
 
-const userMenuItems = computed<DropdownMenuItem[][]>(() => [
+const userMenuItems = computed(() => [
   [
     {
       slot: "profile" as const
@@ -66,7 +64,7 @@ const userMenuItems = computed<DropdownMenuItem[][]>(() => [
   ]
 ])
 
-const items = computed(() => [
+const navItems = computed(() => [
   {
     label: "News",
     to: "/page/news"
@@ -123,7 +121,26 @@ const items = computed(() => [
   }
 ])
 
-const columns: FooterColumn[] = [
+const mobileNavItems = computed(() => {
+  if (isLoggedIn.value) return [userMenuItems.value[1], userMenuItems.value[2]]
+  else
+    return [
+      [
+        {
+          label: "Sign in",
+          to: signInPath(),
+          icon: "ph:sign-in"
+        },
+        {
+          label: "Sign up",
+          to: signUpPath(),
+          icon: "ph:user-plus"
+        }
+      ]
+    ]
+})
+
+const columns = [
   {
     label: "Community",
     children: [
@@ -173,13 +190,13 @@ const columns: FooterColumn[] = [
 </script>
 
 <template>
-  <UHeader>
+  <UHeader mode="slideover">
     <template #left>
       <UIcon :name="OtomoLogo" class="text-primary size-10" />
       <UNavigationMenu
         content-orientation="vertical"
         class="ml-3"
-        :items="items"
+        :items="navItems"
       />
     </template>
 
@@ -241,63 +258,7 @@ const columns: FooterColumn[] = [
     </template>
 
     <template #body>
-      <UNavigationMenu :items="items" orientation="vertical" />
-
-      <div class="mt-4 flex flex-col gap-2">
-        <template v-if="isLoggedIn">
-          <div class="flex items-center gap-3 px-2 py-2">
-            <UAvatar :src="userAvatar" />
-            <div>
-              <p class="text-sm font-semibold">{{ userName }}</p>
-              <p class="text-muted text-xs">{{ userEmail }}</p>
-            </div>
-          </div>
-          <UButton
-            label="Settings"
-            icon="i-ph-gear-six"
-            color="neutral"
-            variant="ghost"
-            block
-            to="#"
-          />
-          <UButton
-            label="My following"
-            icon="i-ph-heart"
-            color="neutral"
-            variant="ghost"
-            block
-            to="#"
-          />
-          <UButton
-            label="My proposals"
-            icon="i-ph-git-pull-request"
-            color="neutral"
-            variant="ghost"
-            block
-            to="#"
-          />
-          <UButton
-            label="My pages"
-            icon="i-ph-files"
-            color="neutral"
-            variant="ghost"
-            block
-            to="#"
-          />
-          <UButton
-            label="Log out"
-            icon="i-ph-sign-out"
-            color="neutral"
-            variant="ghost"
-            block
-            @click="sessionId && router.delete(sessionPath(sessionId))"
-          />
-        </template>
-        <template v-else>
-          <UButton label="Sign in" color="neutral" variant="soft" block />
-          <UButton label="Get started" block :to="signUpPath()" />
-        </template>
-      </div>
+      <UNavigationMenu :items="mobileNavItems" orientation="vertical" />
     </template>
   </UHeader>
 
