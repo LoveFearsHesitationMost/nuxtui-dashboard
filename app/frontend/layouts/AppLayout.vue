@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { computed } from "vue"
 import OtomoLogo from "@/assets/otomo.svg?component"
-import { sessionPath, signInPath, signUpPath } from "@/routes"
+import {
+  sessionPath,
+  settingsProfilePath,
+  signInPath,
+  signUpPath
+} from "@/routes"
 import { router, usePage } from "@inertiajs/vue3"
 
 defineProps({
@@ -14,11 +19,8 @@ defineProps({
 const page = usePage()
 const isLoggedIn = computed(() => !!page.props.auth.session)
 const userEmail = computed(() => page.props.auth.user?.email ?? "")
-const userName = "Li Hua"
-const userAvatar = computed(
-  () =>
-    `https://api.dicebear.com/10.x/notionists/svg?seed=${encodeURIComponent(userEmail.value)}`
-)
+const userName = computed(() => page.props.auth.user?.name ?? "")
+const userAvatar = computed(() => page.props.auth.user?.avatar_url ?? "")
 
 const sessionId = computed(() => page.props.auth.session?.id)
 
@@ -32,7 +34,7 @@ const userMenuItems = computed(() => [
     {
       label: "Settings",
       icon: "i-ph-gear-six",
-      to: "#"
+      to: settingsProfilePath()
     },
     {
       label: "My following",
@@ -129,12 +131,12 @@ const mobileNavItems = computed(() => {
         {
           label: "Sign in",
           to: signInPath(),
-          icon: "ph:sign-in"
+          icon: "i-ph-sign-in"
         },
         {
           label: "Sign up",
           to: signUpPath(),
-          icon: "ph:user-plus"
+          icon: "i-ph-user-plus"
         }
       ]
     ]
@@ -268,7 +270,6 @@ const columns = [
 
   <UFooter
     :ui="{
-      top: 'border-b border-default',
       container: 'border-t border-default lg:py-8',
       right: 'gap-x-0 flex-wrap'
     }"

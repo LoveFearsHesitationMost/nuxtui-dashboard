@@ -8,3 +8,8 @@
 #app {
   isolation: isolate;
 }
+
+@utility cjk-autospace {
+  text-autospace: normal;
+  -ms-text-autospace: ideograph-numeric;
+}

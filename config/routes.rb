@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     resource :profile
   end
 
+  # Override Active Storage direct uploads with authenticated version
+  post "/rails/active_storage/direct_uploads" => "custom/direct_uploads#create"
+
   root "home#index"
 
   # Redirect to localhost from 127.0.0.1 to use same IP address with Vite server

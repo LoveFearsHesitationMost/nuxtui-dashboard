@@ -3,5 +3,5 @@ Gemfile = "8fb518b6e5d68ebbd81ae1e4a560252ab85ca2fbc0567cfc96c0defd14e598fa"
 "Gemfile.lock" = "5f3de3daf10dee363a19ecb205907227c7773230279047c3f72f60ec87298959"
 
 [providers.npm]
-"package-lock.json" = "c54be468af9614c736647d7b2d9134172485b440bf3d0ed7ddcdc89a159bdc0c"
-"package.json" = "15afdeae4f3894c365ead7e5d01eea455c92af3feac86afde6f4bba2b8b1e9cf"
+"package-lock.json" = "db235158c2650c1450989e7ed0d17e5d00902e7c678a673317f2b5af3510b77f"
+"package.json" = "94fb123d87f74afef0661deadd72d80912a0f3bb969e6acf672cbaf797915a8a"
